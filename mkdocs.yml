@@ -1,0 +1,28 @@
+site_name: Robert Strube's 2nd Brain
+theme:
+  name: material
+  palette: 
+    scheme: slate
+    primary: indigo
+    accent: indigo
+  features:
+  - content.code.copy
+  - content.code.annotate
+plugins:
+  - search
+  - tags
+  - roamlinks
+markdown_extensions:
+  - abbr
+  - attr_list
+  - def_list
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - tables

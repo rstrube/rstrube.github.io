@@ -56,6 +56,7 @@ The following is a horizontal rule
 ---
 
 This is a table:
+
 | Column 1 | Column 2 |
 | -------- | -------- |
 | R1C1     | R1C2     |

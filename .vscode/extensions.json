@@ -9,6 +9,12 @@
     "yzhang.markdown-all-in-one",
 
     // Image-pasting for markdown
-    "mushan.vscode-paste-image"
+    "mushan.vscode-paste-image",
+
+    // Spell checker
+    "streetsidesoftware.code-spell-checker",
+
+    // YAML support for mkdocs
+    "redhat.vscode-yaml"
   ]
 }
