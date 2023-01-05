@@ -1,8 +1,14 @@
 ---
 title: 'Git Cheetsheet'
 tags: ['development','git','cheatsheet']
+date: 2023-01-04
 ---
-# Git Cheatsheet
+# Git Cheatsheet {: .primaryHeading }
+<small>Last updated: 2023-01-04</small>
+{: .primaryDate }
+
+---
+
 ## Delete all Local Branches Except for Specific Branch
 There are times when you would like to clean out most of your local branches, keeping a few specific branches:
 

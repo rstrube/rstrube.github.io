@@ -1,8 +1,14 @@
 ---
 title: 'Vim Cheatsheet'
 tags: ['development', 'vim', 'cheatsheet']
+date: 2023-01-04
 ---
-# Vim Cheatsheet
+# Vim Cheatsheet {: .primaryHeading }
+<small>Last updated: 2023-01-04</small>
+{: .primaryDate }
+
+---
+
 ## Normal Mode
 ### Cutting Text
 There are various ways to delete text. All of these commands can be prefixed with a **count** value. `d` and `c` commands can accept any motion commands. Only arrow motion examples are shown in this section, many more variations will be discussed later in this chapter.

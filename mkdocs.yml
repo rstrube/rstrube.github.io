@@ -8,14 +8,19 @@ theme:
   features:
   - content.code.copy
   - content.code.annotate
+extra_css:
+  - stylesheets/extra.css
 plugins:
   - search
   - tags
   - roamlinks
 markdown_extensions:
   - abbr
+  - admonition
   - attr_list
   - def_list
+  - md_in_html
+  - pymdownx.details
   - pymdownx.emoji:
       emoji_index: !!python/name:materialx.emoji.twemoji
       emoji_generator: !!python/name:materialx.emoji.to_svg
@@ -25,4 +30,9 @@ markdown_extensions:
   - pymdownx.superfences
   - pymdownx.tasklist:
       custom_checkbox: true
+  - pymdownx.critic
+  - pymdownx.caret
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.tilde
   - tables

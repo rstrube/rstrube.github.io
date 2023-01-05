@@ -1,39 +1,41 @@
 ---
-title: 'Systemd Coredumps'
+title: 'Systemd Core Dumps'
 tags: ['linux', 'systemd']
+date: 2023-01-04
 ---
-# Systemd Coredumps
-systemd-coredump is used by default to manage coredumps for applications that crash.
+# Systemd Core Dumps {: .primaryHeading }
+<small>Last updated: 2023-01-04</small>
+{: .primaryDate }
 
-You can use the `coredumpctl` to list and examine coredump files.
+---
 
-## Listing Coredumps
-To list core dumps (with the newest first):
+Systemd manages core dumps for applications that crash.
 
-```
+You can use `coredumpctl` to list and examine core dump files.
+
+## Listing Core Dumps
+```shell
+# list core dumps (newest first):
 coredumpctl -r list
 ```
 
-# Inspecting a Coredump
-Once you know the PID of the core dump, you can:
-
-```
+## Inspecting a Core Dump
+```shell
+# inspect a core dump using PID
 coredumpctl info {PID}
 ```
 
-This will print out the information for the core dump.
-
-You can also dump the core dump information to a text file:
-
-```
+```shell
+# output core dump to text file
 coredumpctl info {PID} > ~/my_coredump.txt
 ```
 
-# Cleaning out old Coredumps
-You can manually run kick off the systemd-tmpfiles process which cleans out all tmp files > 3 days old:
-
-```
+## Cleaning out old Core Dumps
+```shell
+# manually kick off process to clean all tmp files > 3 days old, including core dumps
 systemd-tmpfiles --clean
 ```
 
-You can also manually delete coredump files, they are located in: `/var/lib/systemd/coredump`.
+!!! tip
+
+    You can also manually delete core dump files, they are located in: `/var/lib/systemd/coredump`.

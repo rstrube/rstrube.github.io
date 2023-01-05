@@ -1,9 +1,14 @@
 ---
 title: 'KVM QEMU CPU Tuning'
 tags: ['virtualization','kvm-qemu']
+date: 2023-01-04
 ---
-# KVM QEMU CPU Tuning
-## CPU Pinning
+KVM QEMU CPU Tuning {: .primaryHeading }
+<small>Last updated: 2023-01-04</small>
+{: .primaryDate }
+
+---
+
 It can be helpful to pin virtual CPUs to specific physical CPU cores.  In addition, AMD EPYC/Ryzen CPUs use CCXs (Core Complexes) that group together several physical CPU cores and share an L3 cache.
 
 There's a performance advantage to grouping virtual CPUs into as few physical CPU cores as possible.  Ideally, these physical CPU cores would also be in the same CCX and share the same L3 cache.

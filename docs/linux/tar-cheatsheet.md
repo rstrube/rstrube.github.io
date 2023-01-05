@@ -1,9 +1,15 @@
 ---
 title: 'Tar Cheatsheet'
 tags: ['linux','shell','tar','cheatsheet']
+date: 2023-01-04
 ---
-# Tar Cheatsheet
-## Parameters
+# Tar Cheatsheet {: .primaryHeading }
+<small>Last updated: 2023-01-04</small>
+{: .primaryDate }
+
+---
+
+## tar Parameters
 
 | Option | Description                                                                                                                                          |
 | ------ | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -19,14 +25,14 @@ tags: ['linux','shell','tar','cheatsheet']
 | -j     | Use bzip2 compression when creating / extracting an archive                                                                                          |
 | -J     | Use xz compression when creating / extracting an archive                                                                                             |
 
-## Creating an archive with gzip compression (full paths in archive)
-
+## Creating an Archive with gzip Compression (full paths in archive)
 ```shell
+# create tar.gz archive of specific directory
 tar -cvzpf ~/my-archive.tar.gz /path/to/dir-to-archive
 ```
 
-## Same as above, but switch to directory before creating archive (relative paths in archive):
-
+## Create an Archive with gzip Compression (relative paths)
 ```shell
+# create a tar.gz archive of specific directory (all paths relative to that directory)
 tar -cvzpf ~/my-archive.tar.gz -C /path/to/dir-to-archive .
 ```

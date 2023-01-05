@@ -1,47 +1,45 @@
 ---
 title: 'Apt Cheatsheet'
 tags: ['linux','apt','cheatsheet']
+date: 2023-01-04
 ---
-# Apt Cheatsheet
-To update the list of available packages:
+# Apt Cheatsheet {: .primaryHeading }
+<small>Last updated: 2023-01-04</small>
+{: .primaryDate }
 
+---
 ```shell
+# update list of available packages
 $> sudo apt update
 ```
 
-To upgrade all packages that have updates:
-
 ```shell
+# upgrade all packages that have updates
 $> sudo apt upgrade
 ```
 
-To install an individual package:
-
 ```shell
+# install individual packages(s)
 $> sudo apt install <package(s)>
 ```
 
-To mark a manually installed package as having been "automatically" installed:
-
 ```shell
+# mark a manually installed package as having been "automatically" installed
 $> sudo apt-mark auto <package(s)>
 ```
 
-To list installed packages:
-
 ```shell
+# list installed packages
 $> sudo apt list --installed
 ```
 
-To list upgradable packages:
-
 ```shell
+# list upgradable packages
 $> sudo apt list --upgradable
 ```
 
-To list packages available from a given repo (e.g. see what packages a PPA provides):
-
 ```shell
-cd /var/lib/apt/lists
-grep ^Package: /var/lib/apt/lists/{name of ppa or repo}*_Packages
+# list packages available from a given repo (e.g. see what packages a PPA provides):
+$> cd /var/lib/apt/lists
+$> grep ^Package: /var/lib/apt/lists/{name of ppa or repo}*_Packages
 ```

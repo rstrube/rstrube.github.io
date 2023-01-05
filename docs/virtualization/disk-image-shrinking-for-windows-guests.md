@@ -1,11 +1,20 @@
 ---
 title: 'Disk Image Shrinking for Windows Guests'
 tags: ['virtualization','kvm-qemu','windows']
+date: 2023-01-04
 ---
-# Disk Image Shrinking for Windows Guests
-Before embarking on shrinking your VM disk image first perform a general cleanup of your Windows VM.
+# Disk Image Shrinking for Windows Guests {: .primaryHeading }
+<small>Last updated: 2023-01-04</small>
+{: .primaryDate }
 
-## Windows SxS Cleanup
+---
+
+!!! tip
+
+    Before embarking on shrinking your VM disk image first perform a general cleanup of your Windows VM.
+
+## Windows Cleanup
+### Windows SxS Cleanup
 The Windows SxS maintains an archive of windows components that have been upgraded.  Over time, this can consume a large amount of disk space.  You can run some commands to immediately wipe out all but the most recent windows components.
 
 Using an elevated Command Prompt or Powershell, execute the following:
@@ -18,7 +27,7 @@ See also:
 
 * <https://docs.microsoft.com/en-us/windows-hardware/manufacture/desktop/clean-up-the-winsxs-folder>
 
-## Windows Update Cache Cleanup
+### Windows Update Cache Cleanup
 1. Launch Disk Cleanup
 2. Click the "Cleanup system files button"
 3. Cleanup up any files related to Windows Update.

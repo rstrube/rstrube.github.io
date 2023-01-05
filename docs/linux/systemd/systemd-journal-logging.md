@@ -1,56 +1,58 @@
 ---
 title: 'Systemd Journal Logging'
 tags: ['linux', 'systemd']
+date: 2023-01-04
 ---
-# Systemd Journal Logging
-Systemd uses a logging system called "journal".
+# Systemd Journal Logging {: .primaryHeading }
+<small>Last updated: 2023-01-04</small>
+{: .primaryDate }
+
+---
+
+Systemd uses a logging system called "journal" to manage system wide logging.
+
+You can use `journalctl` to view, manage, and remove logs.
 
 ## Journal Size
-To view the current size of the journal:
-
 ```shell
+# view current size of journal
 journalctl -b -u systemd-journald
 ```
 
 ## Follow Journal Messages
-To follow journal messages in real time:
-
 ```shell
+# follow journal messages in real-time
 journalctl -f
 ```
 
 ## Show Journal Messages from Boot
-To show journal messages from the current boot:
-
 ```shell
+# show journal messages from the current boot
 journalctl -b
 ```
 
-To show journal messages from previous boot:
-
 ```shell
+# show journal messages from previous boot
 journalctl -b -1 # you can put any number here to go back 'n' boots
 ```
 
 ## Manually Cleaning Journal
-Remove archived journal files until the disk space they use falls below 100M:
-
 ```shell
+# remove archived journal files until disk space utilization falls below 100M
 journalctl --vacuum-size=100M
 ```
 
-Make all journal files contain no data older than 2 weeks:
-
 ```shell
+# remove all journal files containing data older than 2 weeks
 journalctl --vacuum-time=2weeks
 ```
 
-Make all journal files contain no data older than 1 day:
-
 ```shell
+# remove all journal files containing data older than 1 day
 journalctl --vacuum-time=1days
 ```
 
 See also:
+
 * `man journalctl`
-* https://wiki.archlinux.org/title/Systemd/Journal
+* <https://wiki.archlinux.org/title/Systemd/Journal>

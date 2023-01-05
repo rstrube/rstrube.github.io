@@ -1,38 +1,43 @@
 ---
 title: 'Systemd Resolved'
 tags: ['linux', 'systemd', 'dns']
+date: 2023-01-04
 ---
-# Systemd Resolved
+# Systemd Resolved {: .primaryHeading }
+<small>Last updated: 2023-01-04</small>
+{: .primaryDate }
+
+---
+
 Systemd resolved is a local caching DNS provider that is used by default by NetworkManager.
 
-*Note: it is not enabled by default for Arch Linux installations, to enable it:*
+!!! tip
 
-```shell
-sudo systemctl enable --now systemd-resolved.service
-```
+    Systemd resolved is not enabled by default for Arch Linux installations, to enable it during or post installation run the following:
+
+    ```shell
+    sudo systemctl enable --now systemd-resolved.service
+    ```
+You can use `resolvectl` to manage Systemd resolved.
 
 ## Check Status
-To check the status:
-
 ```shell
+# check the status
 resolvectl status
 ```
 
-To check statistics (cache hits / misses):
-
 ```shell
+# check statistics (cache hits / misses)
 resolvectl statistics
 ```
 
-To run a query:
-
+## Run Queries
 ```shell
-# resolvedctl query {hostname}
+# run a specific query
 resolvectl query www.google.com
 ```
-
-To flush cache:
-
+## Flush Cache
 ```shell
+# flush cache
 resolvectl flush-caches
 ```

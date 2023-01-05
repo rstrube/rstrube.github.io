@@ -1,8 +1,14 @@
 ---
 title: 'KVM QEMU AMD CPU Configuration'
 tags: ['virtualization','kvm-qemu']
+date: 2023-01-04
 ---
-# KVM QEMU AMD CPU Configuration
+# KVM QEMU AMD CPU Configuration {: .primaryHeading }
+<small>Last updated: 2023-01-04</small>
+{: .primaryDate }
+
+---
+
 There's currently an issue where the CPU feature `topoext` is not exposed from AMD CPUs to the guest VM.  This affects the ability to use hyperthreading (SMT) on the guest VM.
 
 To work around this issue, you'll need to specifically configure the CPU in the virtual machine XML file.

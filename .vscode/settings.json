@@ -3,6 +3,7 @@
   "editor.wrappingIndent": "indent",
   "editor.overviewRulerBorder": false,
   "editor.lineHeight": 24,
+  "editor.detectIndentation": false,
   "[markdown]": {
     "editor.quickSuggestions": {
         "comments": "on",
@@ -35,5 +36,5 @@
     "tag:yaml.org,2002:python/name:materialx.emoji.to_svg",
     "tag:yaml.org,2002:python/name:materialx.emoji.twemoji",
     "tag:yaml.org,2002:python/name:pymdownx.superfences.fence_code_format"
-  ]
+  ],
 }

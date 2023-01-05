@@ -1,7 +1,14 @@
 ---
 title: 'Minimal .NET Core Console Application with IoC'
 tags: ['development','dotnet','code-example']
+date: 2023-01-04
 ---
+# Minimal .NET Core Console Application with IoC {: .primaryHeading }
+<small>Last updated: 2023-01-04</small>
+{: .primaryDate }
+
+---
+
 ```csharp
 using System;
 using System.IO;

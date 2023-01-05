@@ -1,34 +1,36 @@
 ---
 title: 'Shell Cheatsheet'
 tags: ['linux','shell','cheatsheet']
+date: 2023-01-04
 ---
-# Shell Cheatsheet
+# Shell Cheatsheet {: .primaryHeading }
+<small>Last updated: 2023-01-04</small>
+{: .primaryDate }
+
+---
+
 ## Write / Append Text to a File
 You can ordinarily write or append text to a file using the `>` or `>>` shell operators:
 
-To overwrite:
-
 ```shell
+# overwrite
 echo "Replacement Text" > myFile.txt
 ```
 
-To append:
-
 ```shell
+# append
 echo "Appended Text" >> myFile.text
 ```
 
 ## Write / Append Text to a Protected File
 If you need to write/append text to a protected file, use the `tee` command:
 
-To overwrite:
-
 ```shell
+# overwrite protected file
 echo "Replacement Text" | sudo tee myFile.txt
 ```
 
-To append:
-
 ```shell
+# append to protected file
 echo "Appended Text" | sudo tee -a myFile.txt
 ```
