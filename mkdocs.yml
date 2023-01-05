@@ -6,6 +6,8 @@ theme:
     primary: indigo
     accent: indigo
   features:
+  - navigation.tabs
+  - navigation.sections
   - content.code.copy
   - content.code.annotate
 extra_css:
