@@ -46,6 +46,7 @@ theme:
       vim: simple/vimeo
       virtualization: octicons/container-16
       wayland: octicons/screen-full-16
+      webpack: simple/webpack
       windows: simple/windows11
 extra:
   tags:
@@ -77,6 +78,7 @@ extra:
     vim: vim
     virtualization: virtualization
     wayland: wayland
+    webpack: webpack
     windows: windows
 extra_css:
   - stylesheets/extra.css
