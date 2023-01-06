@@ -10,6 +10,69 @@ theme:
   - navigation.sections
   - content.code.copy
   - content.code.annotate
+  icon:
+    tag:
+      default: material/tag
+      apt: octicons/package-16
+      arch-linux: simple/archlinux
+      azure: material/microsoft-azure
+      cheat-sheet: fontawesome/regular/lightbulb
+      csharp: material/language-csharp
+      code-example: material/file-code
+      dd: fontawesome/solid/floppy-disk
+      development: material/code-json
+      dns: material/dns
+      docker: simple/docker
+      dotnet: material/dot-net
+      electron: simple/electron
+      external: octicons/link-external-16
+      git: simple/git
+      javascript: simple/javascript
+      kde: material/monitor
+      kvm-qemu: simple/qemu
+      linux: material/linux
+      lodash: simple/lodash
+      react: material/react
+      sbc: material/integrated-circuit-chip
+      shell: material/code-greater-than
+      sql-server: fontawesome/solid/database
+      systemd: fontawesome/solid/gear
+      tar: material/zip-box
+      vim: simple/vimeo
+      virtualization: octicons/container-16
+      wayland: octicons/screen-full-16
+      windows: simple/windows11
+extra:
+  tags:
+    apt: apt
+    arch linux: arch-linux
+    azure: azure
+    cheat sheet: cheat-sheet
+    csharp: csharp
+    code example: code-example
+    dd: dd
+    development: development
+    dns: dns
+    docker: docker
+    dotnet: dotnet
+    electron: electron
+    external: external
+    git: git
+    javascript: javascript
+    kde: kde
+    kvm qemu: kvm-qemu
+    linux: linux
+    lodash: lodash
+    react: react
+    sbc: sbc
+    shell: shell
+    sql server: sql-server
+    systemd: systemd
+    tar: tar
+    vim: vim
+    virtualization: virtualization
+    wayland: wayland
+    windows: windows
 extra_css:
   - stylesheets/extra.css
 plugins:

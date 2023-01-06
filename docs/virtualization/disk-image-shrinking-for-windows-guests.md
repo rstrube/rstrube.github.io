@@ -1,6 +1,6 @@
 ---
 title: 'Disk Image Shrinking for Windows Guests'
-tags: ['virtualization','kvm-qemu','windows']
+tags: ['virtualization','kvm qemu','windows']
 date: 2023-01-04
 ---
 # Disk Image Shrinking for Windows Guests {: .primaryHeading }

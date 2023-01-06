@@ -1,9 +1,9 @@
 ---
-title: 'Shell Cheatsheet'
-tags: ['linux','shell','cheatsheet']
+title: 'Shell Cheat Sheet'
+tags: ['linux','shell','cheat sheet']
 date: 2023-01-04
 ---
-# Shell Cheatsheet {: .primaryHeading }
+# Shell Cheat Sheet {: .primaryHeading }
 <small>Last updated: 2023-01-04</small>
 {: .primaryDate }
 

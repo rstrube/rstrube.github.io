@@ -1,9 +1,9 @@
 ---
-title: 'Lodash Cheatsheet'
-tags: ['development','javascript','lodash','cheatsheet']
+title: 'Lodash Cheat Sheet'
+tags: ['development','javascript','lodash','cheat sheet']
 date: 2023-01-04
 ---
-# Lodash Cheatsheet {: .primaryHeading }
+# Lodash Cheat Sheet {: .primaryHeading }
 <small>Last updated: 2023-01-04</small>
 {: .primaryDate }
 

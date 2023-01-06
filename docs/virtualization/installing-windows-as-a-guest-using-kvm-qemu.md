@@ -1,6 +1,6 @@
 ---
 title: 'Installing Windows as a Guest using KVM QEMU'
-tags: ['virtualization','kvm-qemu','windows']
+tags: ['virtualization','kvm qemu','windows']
 ---
 # Installing Windows as a Guest using KVM QEMU
 ## Prerequisites

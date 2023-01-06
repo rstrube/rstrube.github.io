@@ -1,9 +1,9 @@
 ---
-title: 'Wayland Cheatsheet'
-tags: ['linux','wayland','cheatsheet','electron']
+title: 'Wayland Cheat Sheet'
+tags: ['linux','wayland','cheat sheet','electron']
 date: 2023-01-04
 ---
-# Wayland Cheatsheet {: .primaryHeading }
+# Wayland Cheat Sheet {: .primaryHeading }
 <small>Last updated: 2023-01-04</small>
 {: .primaryDate }
 

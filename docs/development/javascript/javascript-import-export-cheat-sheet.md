@@ -1,9 +1,9 @@
 ---
-title: 'Javascript Import Export Cheatsheet'
-tags: ['development','javascript','cheatsheet']
+title: 'Javascript Import Export Cheat Sheet'
+tags: ['development','javascript','cheat sheet']
 date: 2023-01-04
 ---
-# Javascript Import Export Cheatsheet {: .primaryHeading }
+# Javascript Import Export Cheat Sheet {: .primaryHeading }
 <small>Last updated: 2023-01-04</small>
 {: .primaryDate }
 

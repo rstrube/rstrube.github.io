@@ -1,9 +1,9 @@
 ---
-title: 'Vim Cheatsheet'
-tags: ['development', 'vim', 'cheatsheet']
+title: 'Vim Cheat Sheet'
+tags: ['development', 'vim', 'cheat sheet']
 date: 2023-01-04
 ---
-# Vim Cheatsheet {: .primaryHeading }
+# Vim Cheat Sheet {: .primaryHeading }
 <small>Last updated: 2023-01-04</small>
 {: .primaryDate }
 

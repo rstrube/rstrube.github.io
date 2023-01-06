@@ -1,6 +1,6 @@
 ---
 title: 'Setting up Arch Linux on Cubox-i'
-tags: ['sbc','linux','arch-linux','cubox']
+tags: ['sbc','linux','arch linux']
 date: 2023-01-04
 ---
 # Setting up Arch Linux on Cubox-i {: .primaryHeading }

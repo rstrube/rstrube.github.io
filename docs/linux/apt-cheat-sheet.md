@@ -1,9 +1,9 @@
 ---
-title: 'Apt Cheatsheet'
-tags: ['linux','apt','cheatsheet']
+title: 'Apt Cheat Sheet'
+tags: ['linux','apt','cheat sheet']
 date: 2023-01-04
 ---
-# Apt Cheatsheet {: .primaryHeading }
+# Apt Cheat Sheet {: .primaryHeading }
 <small>Last updated: 2023-01-04</small>
 {: .primaryDate }
 

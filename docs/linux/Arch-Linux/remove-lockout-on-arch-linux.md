@@ -1,6 +1,6 @@
 ---
 title: 'Remove Lockout on Arch Linux'
-tags: ['linux', 'arch-linux']
+tags: ['linux', 'arch linux']
 date: 2023-01-04
 ---
 # Remove Lockout on Arch Linux {: .primaryHeading }

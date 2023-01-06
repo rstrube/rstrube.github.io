@@ -1,9 +1,9 @@
 ---
-title: 'Tar Cheatsheet'
-tags: ['linux','shell','tar','cheatsheet']
+title: 'Tar Cheat Sheet'
+tags: ['linux','shell','tar','cheat sheet']
 date: 2023-01-04
 ---
-# Tar Cheatsheet {: .primaryHeading }
+# Tar Cheat Sheet {: .primaryHeading }
 <small>Last updated: 2023-01-04</small>
 {: .primaryDate }
 

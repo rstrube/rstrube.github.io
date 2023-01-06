@@ -1,9 +1,9 @@
 ---
-title: '.NET Core CLI Cheatsheet'
-tags: ['development','dotnet', 'cheatsheet']
+title: '.NET Core CLI Cheat Sheet'
+tags: ['development','dotnet', 'cheat sheet']
 date: 2023-01-04
 ---
-# .NET Core CLI Cheatsheet {: .primaryHeading }
+# .NET Core CLI Cheat Sheet {: .primaryHeading }
 <small>Last updated: 2023-01-04</small>
 {: .primaryDate }
 

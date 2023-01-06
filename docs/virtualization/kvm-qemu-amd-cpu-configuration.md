@@ -1,6 +1,6 @@
 ---
 title: 'KVM QEMU AMD CPU Configuration'
-tags: ['virtualization','kvm-qemu']
+tags: ['virtualization','kvm qemu']
 date: 2023-01-04
 ---
 # KVM QEMU AMD CPU Configuration {: .primaryHeading }

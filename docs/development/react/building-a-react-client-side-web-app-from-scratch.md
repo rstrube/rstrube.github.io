@@ -1,6 +1,6 @@
 ---
 title: 'Building a React Client-Side Web Application from Scratch'
-tags: ['development','react','tutorial','external']
+tags: ['development','react','code example','external']
 date: 2023-01-04
 ---
 # Building a React Client-Side Web Application from Scratch {: .primaryHeading }
