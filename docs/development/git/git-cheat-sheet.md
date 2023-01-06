@@ -52,7 +52,7 @@ You have two choices:
 
 :   !!! warning
 
-        This has the downside of requiring the deletion of a specific file (at least temporarily).  After you've pushed both commits, you'll need to manually copy back / restore a local copy of the deleted file.  It will be git ignored moving forward.   
+        This has the downside of requiring the deletion of a specific file (at least temporarily).  After you've pushed both commits, you'll need to manually restore a local copy of the deleted file.  It will be git ignored moving forward.   
 
     First commit a deletion of the file.
     Second commit changes to `.gitignore` to explicitly ignore the file moving forward.
