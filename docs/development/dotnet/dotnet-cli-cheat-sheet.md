@@ -81,7 +81,7 @@ dotnet new <template>
     * `webapi`: ASP.NET Core Web API App
 
     !!! warning
-        Razor Pages are an evolution of WebForms, and therefore comes with many of the disadvantages.
+        Razor Pages are an evolution of WebForms, and therefore comes with many of the same disadvantages.
 
 ## Adding a Project to a Solution
 ```shell
