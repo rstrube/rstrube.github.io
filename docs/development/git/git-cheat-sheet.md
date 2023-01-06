@@ -43,7 +43,7 @@ git reset --hard origin/HEAD
 git clean -xdf
 ```
 
-# Gitignore a Specific File that was Previously Added to a Repository
+## Gitignore a Specific File that was Previously Added to a Repository
 If a file is *already* being tracked in a given repository, simply adding it to `.gitignore` won't remove it.
 
 You have two choices:
