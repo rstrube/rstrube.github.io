@@ -1,7 +1,3 @@
----
-tags: my-tag1 my-tag2
----
-
 # Tags and Tag Explorer
 
 ## Tags
