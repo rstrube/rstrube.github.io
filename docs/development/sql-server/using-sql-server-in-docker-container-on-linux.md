@@ -11,13 +11,11 @@ date: 2023-01-04
 
 ## Installation and Configuration
 - [x] Download latest Docker image for SQL Server 2022
-
 ```shell
 docker pull mcr.microsoft.com/mssql/server:2022-latest
 ```
 
 - [x] Start a new container instance from the downloaded Docker image
-
 ```shell
 docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=<YourStrong@Passw0rd>" -p 1433:1433 --name sql1 --hostname sql1 -v sql1:/var/opt/mssql -d mcr.microsoft.com/mssql/server:2022-latest
 ```
@@ -29,13 +27,11 @@ docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=<YourStrong@Passw0rd>" -p 14
     You can name the image whatever you want, for this example we will use an image name of `sql1`.
 
 - [x] Confirm that the new instance is running
-
 ```shell
 docker ps -a
 ```
 
 - [x] Confirm the location of the volume (this will tell you your path on your host machine)
-
 ```shell
 docker volume inspect sql1
 [
@@ -52,7 +48,6 @@ docker volume inspect sql1
 ```
 
 - [x] Copy MDF and LDF files to the container (this will indirectly copy them to the volume on your host machine):
-
 ```shell
 # copy the mdf and ldf files
 docker cp ./myFiles/MyProject.mdf sql1:/var/opt/mssql/data/
@@ -91,7 +86,9 @@ docker exec -it --user root sql1 chown mssql:root /var/opt/mssql/data/MyProject_
     FOR ATTACH;
     ```
 
-## Starting a Shell in the Docker Image
+## Starting a Shell in the Docker Container
+If you would like to start a shell within the Docker container you can use the `docker exec` command:
+
 ```shell
 # start a shell in the docker image
 sudo docker exec -it sql1 bash

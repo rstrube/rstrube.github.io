@@ -11,7 +11,6 @@ date: 2023-01-04
 
 - [x] If AzCopy is not installed download and install it from [here](https://learn.microsoft.com/en-us/azure/storage/common/storage-use-azcopy-v10).
 - [x] Once installed, navigate to its directory in the Command Prompt or Powershell (run as admin!)
-
 ```powershell
 # location depends on which version you installed x64 or x86
 %ProgramFiles(x86)%\Microsoft SDKs\Azure\AzCopy
@@ -19,7 +18,6 @@ date: 2023-01-04
 ```
 
 - [x] Once navigated to install directory run the command:
-
 ```powershell
 AzCopy /Source:<source> /Dest:<destination> [Options]
 	
