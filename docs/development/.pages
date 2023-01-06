@@ -1,6 +1,6 @@
 nav:
   - git
-  - dotnet
+  - .NET: dotnet
   - javascript
   - react
   - azure

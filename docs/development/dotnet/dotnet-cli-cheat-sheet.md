@@ -1,13 +1,17 @@
 ---
-title: '.NET Core CLI Cheat Sheet'
+title: '.NET CLI Cheat Sheet'
 tags: ['development','dotnet', 'cheat sheet']
 date: 2023-01-04
 ---
-# .NET Core CLI Cheat Sheet {: .primaryHeading }
+# .NET CLI Cheat Sheet {: .primaryHeading }
 <small>Last updated: 2023-01-04</small>
 {: .primaryDate }
 
 ---
+
+!!! note
+
+    The information pertains specifically to the CLI tool provided with .NET "Core" (e.g. .NET 5.x, 6.x, 7.x).  It does not apply to the legacy versions of .NET Framework (e.g. .NET 4.8)
 
 ## Creating a new solution
 
