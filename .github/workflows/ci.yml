@@ -18,4 +18,5 @@ jobs:
               mkdocs-material \
               mkdocs-roamlinks-plugin \
               mkdocs-awesome-pages-plugin \
+              mkdocs-glightbox
       - run: mkdocs gh-deploy --force
