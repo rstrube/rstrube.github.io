@@ -32,6 +32,7 @@ theme:
       electron: simple/electron
       external: octicons/link-external-16
       git: simple/git
+      hardware: octicons/cpu-16
       javascript: simple/javascript
       kde: material/monitor
       kvm-qemu: simple/qemu
@@ -64,6 +65,7 @@ extra:
     electron: electron
     external: external
     git: git
+    hardware: hardware
     javascript: javascript
     kde: kde
     kvm qemu: kvm-qemu

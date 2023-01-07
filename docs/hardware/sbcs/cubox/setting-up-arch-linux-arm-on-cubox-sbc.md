@@ -1,13 +1,17 @@
 ---
-title: 'Setting up Arch Linux on Cubox-i'
-tags: ['sbc','linux','arch linux']
+title: 'Setting up Arch Linux ARM on Cubox-i'
+tags: ['hardware','sbc','linux','arch linux']
 date: 2023-01-04
 ---
-# Setting up Arch Linux on Cubox-i {: .primaryHeading }
+# Setting up Arch Linux ARM on Cubox-i {: .primaryHeading }
 <small>Last updated: 2023-01-04</small>
 {: .primaryDate }
 
 ---
+
+## Introduction
+
+Unfortunately the Arch Linux ARM image available for the Cubox-i is extremely old.  It ships with kernel 3.14 which has some bugs that prevent systemd networking from functioning correctly.  This complicates the installation process substantially.  This guide will walk you through setting up an up-to-date Arch Linux ARM install for your Cubox-i.
 
 ## Micro-SD Card Setup
 
