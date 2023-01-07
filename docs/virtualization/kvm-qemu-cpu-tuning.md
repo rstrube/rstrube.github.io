@@ -3,7 +3,7 @@ title: 'KVM QEMU CPU Tuning'
 tags: ['virtualization','kvm qemu']
 date: 2023-01-04
 ---
-KVM QEMU CPU Tuning {: .primaryHeading }
+# KVM QEMU CPU Tuning {: .primaryHeading }
 <small>Last updated: 2023-01-04</small>
 {: .primaryDate }
 

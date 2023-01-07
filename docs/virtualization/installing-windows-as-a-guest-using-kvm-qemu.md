@@ -1,121 +1,207 @@
 ---
 title: 'Installing Windows as a Guest using KVM QEMU'
 tags: ['virtualization','kvm qemu','windows']
+date: 2023-01-06
 ---
-# Installing Windows as a Guest using KVM QEMU
+# Installing Windows as a Guest using KVM QEMU {: .primaryHeading }
+<small>Last updated: 2023-01-04</small>
+{: .primaryDate }
+
+---
+
 ## Prerequisites
-* Make sure to download an ISO for Windows.  In this example we are using an ISO for Windows Server 2022.
-* Make sure to download the latest version of `virtio-win` ISO from: <https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/>.  This will include the Windows virtio drivers and the Windows guest tools.  As of this writing the latest version is `0.1.217`.
 
-![[Pasted image 20220518164928.png]]
+- [x] Make sure to download an ISO for Windows.  In this example we are using an ISO for Windows Server 2022.
+- [x] Make sure to download the latest version of `virtio-win` ISO from: <https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/latest-virtio/>.  This will include the Windows virtio drivers and the Windows guest tools.
 
-# Creating a new VM
-When creating a new virtual machine, make sure to select the appropriate Windows version from the OS dropdown.  This makes ensures that the HyperV enlightenments are enabled.
+!!! note
 
-![[Pasted image 20220518161018.png]]
+    The latest version at the time of this writing is `0.1.225`.  Download whatever the latest version is.  Many of the screenshots contained within might reference an older version of the `virtio-win` ISO.
 
-Make sure to also select the "Customize configuration before install" checkbox so we can fully customize the VMs virtual hardware *before* starting installation.
+## Creating a new VM
 
-![[Pasted image 20220518153719.png]]
+- [x] When creating a new virtual machine, make sure to select the appropriate Windows version from the OS dropdown.  This makes ensures that the HyperV enlightenments are enabled.
+
+<figure markdown>
+  ![[new-vm-windows-version.png]]{: width="500"}
+  <figcaption>Selecting correct Windows version</figcaption>
+</figure>
+
+- [x] Make sure to also select the **Customize configuration before install** checkbox so we can fully customize the VMs virtual hardware *before* starting installation.
+
+<figure markdown>
+  ![[customize-before-install.png]]{: width="500"}
+  <figcaption>Selecting "Customize configuration before install" checkbox</figcaption>
+</figure>
 
 ## Configuring VM to use UEFI Instead of Legacy BIOS
-It's highly recommended to setup your new VM with UEFI.  Make sure to select the `x64 OVMF_CODE.fd` firmware.
 
-*Note: if you don't see this option, you will need to install the `edk2-ovmf` package (Arch)*
+- [x] It's highly recommended to setup your new VM with UEFI.  Make sure to select the `UEFI x86_x64 OVMF_CODE.fd` firmware.
 
-![[Pasted image 20220518153913.png]]
+!!! tip
+
+    If you don't see this option, you will need to install your distro's OVMF package.  For Arch Linux the package is `edk2-ovmf`.
+
+<figure markdown>
+  ![[ovmf.png]]{: width="500"}
+  <figcaption>Selecting OVMF firmware to support UEFI for your VM</figcaption>
+</figure>
 
 ## Configuring Virtual Disks to use VirtIO
+
 In order to improve overall VM performance, it's highly recommended to setup your virtual disks to use VirtIO.  The main benefits of this are:
-1. Increased performance
-2. Passthrough ATA TRIM support (for SSDs)
 
-To do this configure the Virtual Disk as follows:
+* Increased performance
+* Passthrough ATA TRIM support (for SSDs)
 
-![[Pasted image 20220518160548.png]]
+- [x] To do this configure configure your SATA disk with a **Disk bus** of `VirtIO` and a **Discard mode** of `unmap`.
 
-## Configurating Virtual NIC to use VirtIO
-It's also recommended to configure your virtual network interface card to use VirtIO.
+<figure markdown>
+  ![[disk-virtio.png]]{: width="500"}
+  <figcaption>Configuring the SATA disk to use VirtIO</figcaption>
+</figure>
 
-![[Pasted image 20220518162518.png]]
+## Configuring Virtual NIC to use VirtIO
+
+It's also recommended to configure your virtual NIC to use VirtIO.
+
+- [x] To do this configure configure your NIC device with a **Device model* of `VirtIO`.
+
+<figure markdown>
+  ![[nic-virtio.png]]{: width="500"}
+  <figcaption>Configuring the NIC to use VirtIO</figcaption>
+</figure>
 
 ## Adding Additional CDROM Drive for Driver Disk
-Because we are setting up Windows to use VirtIO for both the virtual disk and the NIC we need to add another CDROM for installation.  This CDROM will be used to load the virtio drivers during the installation.  Click the "Add Hardware" button to add a new CDROM to your VM.
 
-![[Pasted image 20220518164421.png]]
+Because we are setting up Windows to use VirtIO for both the virtual disk and the NIC we need to add another CDROM for installation.  This CDROM will be used to load the virtio drivers during the installation.
 
-The go ahead and configure a new CDROM drive and load it with the `virtio-win` ISO you downloaded previously.
+- [x] Click the **Add Hardware** button to add a new CDROM to your VM.
+- [x] Configure a new CDROM drive to load `virtio-win` ISO you downloaded previously.
 
-![[Pasted image 20220518165512.png]]
+<figure markdown>
+  ![[cdrom-with-iso-1.png]]{: width="500"}
+  <figcaption>Adding a new CDROM to the VM</figcaption>
+</figure>
 
-![[Pasted image 20220518165201.png]]
+<figure markdown>
+  ![[cdrom-with-iso-2.png]]{: width="500"}
+  <figcaption>Configuring the new CDROM to load the virtio-win ISO</figcaption>
+</figure>
 
-## CPU Tuning
-You might wish to consider steps to pin your virtual CPUs to specific cores of your host CPU.  Please see [[kvm-qemu-cpu-tuning]] for more information.  You might also need to perform some additional tweaks for AMD CPUs.  Please see [[kvm-qemu-amd-cpu-configuration]] for more information.
+## CPU Configuration
+
+Depending on your CPU you might have to perform some additional steps:
+
+* CPU Tuning [[kvm-qemu-cpu-tuning]]
+* Additional AMD CPU Configuration [[kvm-qemu-amd-cpu-configuration]]
 
 ## Configuring QEMU Guest Agent Channel
-You'll now need to add a new channel for the QEMU guest agent.  This will allow your host to communicate window resizing to the guest so that it can dynamically adjust resolution. 
 
-To add the new guest agent channel:
+To support dynamic resolution adjustments on window resizing, you'll need to add a channel for the QEMU guest agent. 
 
-1. Click the "Add Hardware" button.
-2. Select "Channel"
-3. Configure the channel "Name" to be `org.qemu.guest_agent.0`
-4. Configure the channel type to be `UNIX socket (unix)`
-5. Make sure the "Auto socket" option is checked.
+- [x] Add a new channel for the QEMU guest agent.
 
-![[Pasted image 20220519103339.png]]
+1. Click the **Add Hardware** button.
+1. Select **Channel**.
+1. Configure the channel **Name** to be `org.qemu.guest_agent.0`.
+1. Configure the channel type to be `UNIX socket (unix)`.
+1. Make sure the **Auto socket** option is checked.
+
+<figure markdown>
+  ![[channel-ga.png]]{: width="500"}
+  <figcaption>Adding a new channel for the QEMU guest agent</figcaption>
+</figure>
 
 ## Installation
-After configuring your VM, you can click the "Begin Installation" button.  This should boot the virtual machine as if you were booting off of the Windows installation ISO.
 
-![[Pasted image 20220518162814.png]]
+- [x] After configuring your VM, click the **Begin Installation** button.  This should boot the virtual machine as if you were booting off of the Windows installation ISO.
 
-When prompted to select the installation type, make sure to choose "Custom".
+<figure markdown>
+  ![[windows-install-1.png]]{: width="500"}
+  <figcaption>Starting Windows installation after booting VM</figcaption>
+</figure>
 
-![[Pasted image 20220518165923.png]]
+- [x] Choose **Custom** when prompted to select the installation type.
 
-Now you'll need to load the `virtio-win` driver via the second CDROM drive you added to your VM.
+<figure markdown>
+  ![[windows-install-2.png]]{: width="500"}
+  <figcaption>Selecting "Custom" installation type</figcaption>
+</figure>
 
-![[Pasted image 20220518170015.png]]
+- [x] Select the **Load driver** option.
 
-![[Pasted image 20220518170110.png]]
+<figure markdown>
+  ![[windows-install-3.png]]{: width="500"}
+  <figcaption>Selecting the "Load driver" option.</figcaption>
+</figure>
 
-Make sure to navigate to the `viostor` directory and select the correct subdirectory for your version of windows.  In this case `2k22/amd64` for Windows Server 2022.
+- [x] Load the VirtIO driver via the second CDROM drive you added to your VM.
 
-![[Pasted image 20220518170428.png]]
+<figure markdown>
+  ![[windows-install-4.png]]{: width="500"}
+  <figcaption>Loading the VirtIO driver from the second CDROM drive.</figcaption>
+</figure>
 
-After installing the driver you should be able to see the virtual disk available for installation.  You might need to refresh the drive listing for it to fully come online and become available for installation.  Go through the rest of the Windows installation process.
+- [x] Navigate to the `viostor` directory and select the correct subdirectory for your specific version of windows.  For this example we are using `2k22/amd64` which is used Windows Server 2022 x86_x64.
+
+<figure markdown>
+  ![[windows-install-5.png]]{: width="500"}
+  <figcaption>Navigating to the correct driver directory.</figcaption>
+</figure>
+
+- [x] After installing the driver you should be able to see the virtual disk available for installation.  You might need to refresh the drive listing for it to fully come online and become available for installation.
+- [x] Go through the rest of the Windows installation process normally.
 
 ## Post-Installation
-After installing windows and logging in, you'll need to complete the rest of the VirtIO driver installation process.  You should still have the `virtio-win` ISO in your second CDROM.  Navigate to it and run the `virtio-win-guest-tools` executable.
 
-![[Pasted image 20220518172831.png]]
+After installing windows and logging in, you'll need install the VirtIO guest tools.  You should still have the `virtio-win` ISO in your second CDROM drive.
 
-*Note: there is currently a bug with `virtio-win-0.1.217` that will cause installation to fail.  You need to tweak the installation options  for "Pvpanic", "Qemufwcfg", and "Qemupciserial" to "Feature will be installed when required."*
+- [x] Navigate to second CDROM drive and run the `virtio-win-guest-tools` executable.
 
-![[Pasted image 20220519104236.png]]
+<figure markdown>
+  ![[virtio-guest-tools.png]]{: width="500"}
+  <figcaption>Installing the VirtIO guest tools</figcaption>
+</figure>
 
 ## Final Configuration
-Shutdown the guest VM and make the following adjustments to enable automatic guest resizing:
 
-`View -> Scale Display -> Auto resize VM with window`
+- [x] Shutdown the guest VM.
+- [x] Configure Virt Viewer to support dynamic resolution adjustment on window resize. Select `View -> Scale Display -> Auto resize VM with window`.
 
-Note if this option is not available it means that either:
-* Your guest agent channel was not configured properly
-* QEMU guest tools were not installed correctly.
+!!! warning
 
-![[Pasted image 20220519104451.png]]
+    If this option is not available it means that either:
 
-You can also disconnect the ISO from the first CDROM drive, and fully remove the entire second CDROM drive.
+    * Your QEMU guest agent channel was not configured properly.
+    * QEMU guest tools were not installed correctly.
 
-![[Pasted image 20220519104909.png]]
+<figure markdown>
+  ![[virt-viewer.png]]{: width="500"}
+  <figcaption>Configuring virt-viewer for dynamic resolution</figcaption>
+</figure>
 
-![[Pasted image 20220519104957.png]]
+- [x] Unload the ISO from the second CDROM.
 
-## Issues with Maximum Guest Resizing Resolution
-You might notice that there is a maximum resolution your guest VM can scale to.  To fix this you'll need to update the video memory for your virtual video card.  This will allow the VM guest to fully display on larger resolution monitors.
+<figure markdown>
+  ![[unload-iso.png]]{: width="500"}
+  <figcaption>Unloading the virtio-win ISO</figcaption>
+</figure>
 
-To add additional video memory, select the "Video QXL" hardware in your VM configuration and click on the "XML" tab.  Then update `vgamem` from `16384` (16MB) to `65536` (64MB).  This should provide enough video memory to fully display the guest even for high-resolution monitors.
+- [x] Remove the second CDROM entirely from the VM.
 
-![[Pasted image 20220519102746.png]]
+<figure markdown>
+  ![[remove-cdrom.png]]{: width="500"}
+  <figcaption>Removing the second CDROM</figcaption>
+</figure>
+
+!!! tip
+
+    You might notice that there is a maximum resolution your guest VM can scale to.  To fix this you'll need to update the video memory for your virtual video card.  This will allow the VM guest to fully display on larger resolution monitors.
+
+    To add additional video memory, select the **Video QXL** hardware in your VM configuration and click on the **XML** tab.  Then update `vgamem` from `16384` (16MB) to `65536` (64MB).  This should provide enough video memory to fully display the guest even for high-resolution monitors.
+
+    <figure markdown>
+        ![[vga-ram-adjust.png]]{: width="500"}
+        <figcaption>Installing the VirtIO guest tools</figcaption>
+    </figure>
