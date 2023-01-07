@@ -93,8 +93,8 @@ Because we are setting up Windows to use VirtIO for both the virtual disk and th
 
 Depending on your CPU you might have to perform some additional steps:
 
-* CPU Tuning [[kvm-qemu-cpu-tuning]]
-* Additional AMD CPU Configuration [[kvm-qemu-amd-cpu-configuration]]
+* **CPU Pinning**, please see: [[kvm-qemu-cpu-pinning]]
+* Additional **AMD CPU Configuration**, please see: [[kvm-qemu-amd-cpu-configuration]]
 
 ## Configuring QEMU Guest Agent Channel
 

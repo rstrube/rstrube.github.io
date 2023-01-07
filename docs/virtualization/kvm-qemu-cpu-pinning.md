@@ -1,17 +1,17 @@
 ---
-title: 'KVM QEMU CPU Tuning'
+title: 'KVM QEMU CPU Pinning'
 tags: ['virtualization','kvm qemu']
 date: 2023-01-04
 ---
-# KVM QEMU CPU Tuning {: .primaryHeading }
+# KVM QEMU CPU Pinning {: .primaryHeading }
 <small>Last updated: 2023-01-04</small>
 {: .primaryDate }
 
 ---
 
-It can be helpful to pin virtual CPUs to specific physical CPU cores.  In addition, AMD EPYC/Ryzen CPUs use CCXs (Core Complexes) that group together several physical CPU cores and share an L3 cache.
+It can be helpful to pin virtual CPU cores to specific physical CPU cores.  In addition, AMD EPYC/Ryzen CPUs use CCXs (Core Complexes) that group together several physical CPU cores and share an L3 cache.
 
-There's a performance advantage to grouping virtual CPUs into as few physical CPU cores as possible.  Ideally, these physical CPU cores would also be in the same CCX and share the same L3 cache.
+There's a performance advantage to grouping virtual CPU cores into as few host physical CPU cores as possible.  Ideally, these host physical CPU cores would also be in the same CCX and share the same L3 cache.
 
 To determine what the CPU topography of your host machine is, you can use the following command:
 
@@ -42,15 +42,24 @@ CPU NODE SOCKET CORE L1d:L1i:L2:L3 ONLINE    MAXMHZ    MINMHZ      MH
 15    0      0    7 7:7:7:1          yes 1800.0000 1400.0000 1400.000
 ```
 
-It's important to note the `CORE` column and the `L3` column, which reflect the physical CPU cores, and which L3 cache the physical CPU cores are connected to.  Remember often times "hyper-threading" is utiltized to double the number of CPUs available on a given host.
+!!! note
 
-So in the example above, CPUs 0 and 1 are both located on physical CPU core 0.  They also use L3 cache 0.
+    The `CORE` column reflects the host physical CPU core.
 
-In the example above, if I wanted to allocate 8 virtual CPUs to use on the guest VM, the best bet would be to use CPUs 8-15.  This would utilize physical CPU cores 4-7, which are all connected to the same L3 cache (in this case 1).
+    The `L3` column reflects which L3 cache the host physical CPU core is connected to.
+    
+    Remember that often times hyper-threading or SMT is utilized to double the number of host CPU cores available.
 
-To do this, you would do the following in your virtual machine XML file:
+In the example above, host CPU cores `0` and `1` are *both* located on host physical CPU core `0`.  These host physical CPU cores also use L3 cache `0`.
 
-```xml
+If the goal is to allocate 8 virtual CPU cores to use on the guest VM.  The ideal configuration would be to use host CPU cores `8-15`.
+
+* The host CPU cores `8-15` are located on host physical CPU cores `4-7`.
+* More importantly all of these host physical CPU cores share the same L3 cache (L3 cache `1` in this case).
+
+In our example to properly pin the virtual CPU cores to the correct host CPU cores we would configure our VM in the following fashion:
+
+```xml title="Virtual Machine XML Configuration"
   <vcpu placement="static">8</vcpu>
   <cputune>
     <vcpupin vcpu="0" cpuset="8"/>
@@ -64,8 +73,10 @@ To do this, you would do the following in your virtual machine XML file:
   </cputune>
 ```
 
+!!! tip
+
+    If your host machine is running an AMD EPYC/Ryzen CPU please see: [[kvm-qemu-amd-cpu-configuration]] to perform additional CPU configuration.
+
 See also:
 
 * <https://wiki.archlinux.org/title/PCI_passthrough_via_OVMF#CPU_pinning>
-
-*Note: if your host machine is running an AMD EPYC/Ryzen CPU please see: [[kvm-qemu-amd-cpu-configuration]] to perform additional CPU configuration.*

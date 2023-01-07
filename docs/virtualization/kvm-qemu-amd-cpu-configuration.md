@@ -9,18 +9,26 @@ date: 2023-01-04
 
 ---
 
-There's currently an issue where the CPU feature `topoext` is not exposed from AMD CPUs to the guest VM.  This affects the ability to use hyperthreading (SMT) on the guest VM.
+There's currently an issue where the CPU feature `topoext` is not exposed from host AMD CPUs to guest VMs.  This affects the ability to use SMT (hyperthreading) on the guest VM.
 
-To work around this issue, you'll need to specifically configure the CPU in the virtual machine XML file.
+To work around this issue, you'll need to specifically configure the CPU in the virtual machine XML file:
 
-Specifically you'll need to use the `host-passthrough` mode, and explicitly require the `topoext` CPU feature.  In addition, it would be helpful to align the CPU topology.  In this case I've already pinned 8 virtual CPUs to specific host CPUs, (see [[kvm-qemu-cpu-tuning]]).  I've aligned the topology so that to the guest VM, there are 4 virtual physical CPU cores, each one capable of running 2 threads.
+- [x] Set the CPU mode to `host-passthrough`.
+- [x] Make sure to `require` the `topoext` CPU feature.
+- [x] Define a CPU topology that aligns with your physical hardware.
 
-```xml
+In this example our host system has an AMD CPU with 8 physical cores each supporting SMT for a total of 16 host CPU cores.  The goal is to allocate 8 virtual CPU cores to our VM.  Therefore the ideal topology for our VM is to have 4 virtual "physical" CPU cores each with 2 threads for a total of 8 virtual CPU cores.  This aligns and maps well with our host's physical hardware.
+
+```xml title="Virtual Machine XML Configuration File"
   <cpu mode='host-passthrough' check='none'>
     <topology sockets='1' cores='4' threads='2'/>
     <feature policy='require' name='topoext'/>
   </cpu>
 ```
+
+!!! tip
+
+    You should also consider CPU pinning when thinking about your topology.  Please see: [[kvm-qemu-cpu-pinning]] for more information.
 
 See also:
 
