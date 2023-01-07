@@ -1,9 +1,9 @@
 ---
-title: 'Installing Windows as a Guest using KVM QEMU'
+title: 'Installing Windows as a Guest on KVM QEMU'
 tags: ['virtualization','kvm qemu','windows']
 date: 2023-01-06
 ---
-# Installing Windows as a Guest using KVM QEMU {: .primaryHeading }
+# Installing Windows as a Guest on KVM QEMU {: .primaryHeading }
 <small>Last updated: 2023-01-04</small>
 {: .primaryDate }
 
