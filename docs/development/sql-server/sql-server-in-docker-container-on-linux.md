@@ -1,21 +1,21 @@
 ---
-title: 'Using SQL Server in a Docker Container on Linux'
+title: 'SQL Server in a Docker Container on Linux'
 tags: ['development','sql server','docker','linux']
-date: 2023-01-04
+date: 2023-01-09
 ---
-# Using SQL Server in a Docker Container on Linux {: .primaryHeading }
-<small>Last updated: 2023-01-04</small>
+# SQL Server in a Docker Container on Linux {: .primaryHeading }
+<small>Last updated: 2023-01-09</small>
 {: .primaryDate }
 
 ---
 
 ## Installation and Configuration
-- [x] Download latest Docker image for SQL Server 2022
+- [x] Download latest Docker image for SQL Server 2022:
 ```shell
 docker pull mcr.microsoft.com/mssql/server:2022-latest
 ```
 
-- [x] Start a new container instance from the downloaded Docker image
+- [x] Start a new container instance from the downloaded Docker image:
 ```shell
 docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=<YourStrong@Passw0rd>" -p 1433:1433 --name sql1 --hostname sql1 -v sql1:/var/opt/mssql -d mcr.microsoft.com/mssql/server:2022-latest
 ```
@@ -26,12 +26,12 @@ docker run -e "ACCEPT_EULA=Y" -e "MSSQL_SA_PASSWORD=<YourStrong@Passw0rd>" -p 14
 
     You can name the image whatever you want, for this example we will use an image name of `sql1`.
 
-- [x] Confirm that the new instance is running
+- [x] Confirm that the new instance is running:
 ```shell
 docker ps -a
 ```
 
-- [x] Confirm the location of the volume (this will tell you your path on your host machine)
+- [x] Confirm the location of the volume (this will tell you your path on your host machine):
 ```shell
 docker volume inspect sql1
 [
@@ -47,27 +47,42 @@ docker volume inspect sql1
 ]
 ```
 
-- [x] Copy MDF and LDF files to the container (this will indirectly copy them to the volume on your host machine):
+- [x] Copy MDF and LDF files to the container (this will indirectly copy the files to the volume on your host machine):
 ```shell
 # copy the mdf and ldf files
 docker cp ./myFiles/MyProject.mdf sql1:/var/opt/mssql/data/
 docker cp ./myFiles/MyProject_log.ldf sql1:/var/opt/mssql/data/
+```
 
-# update permissions for mdf and ldf files, sql server can only work with files with mssql:root permissions
+- [x] Update the permissions of the MDF and LDF files within the container:
+```shell
+# update permissions for mdf and ldf files, sql server requires mssql:root permissions on the files
 docker exec -it --user root sql1 chown mssql:root /var/opt/mssql/data/MyProject.mdf
 docker exec -it --user root sql1 chown mssql:root /var/opt/mssql/data/MyProject_log.ldf
 ```
 
 - [x] Create new databases using SQL
 
+!!! tip
+
+    To do this you'll need to connect to your database using [Visual Studio Code](https://aur.archlinux.org/packages/visual-studio-code-bin) (with [SQL Server extension](https://marketplace.visualstudio.com/items?itemName=ms-mssql.mssql)) or [Azure Data Studio](https://aur.archlinux.org/packages/azuredatastudio-bin).  Once connected you should be able to run the SQL required to create new DBs inside the container.
+
 !!! note
 
-    To do this you'll need to connect to your database using vscode (with SQL Server extension) or Azure Data Studio.  Once connected you should be able to run SQL.
+    To login, use the following connection parameters:
 
-!!! example
+    * Server = `localhost`
+    * Authentication type = `SQL Login`
+    * User name = `SA`
+    * Password = `<password entered when creating Docker container>`
+    * Encryption = `False`
+  
+!!! note
 
-    Creating a new database using the previously copied mdf and ldf files:
-   
+    As long as you're mapping to the default port (`1433`), you should not have to provide it.
+
+!!! example "Creating a new database using the MDF and LDF files copied into the container"
+
     ```sql
     CREATE DATABASE MyProject
     ON
@@ -77,7 +92,7 @@ docker exec -it --user root sql1 chown mssql:root /var/opt/mssql/data/MyProject_
     FOR ATTACH;
     ```
 
-    Creating a new database using only an mdf file (assuming there is no accompanying ldf file):
+!!! example "Creating a new database using only an MDF file (i.e. there is no accompanying ldf file)"
 
     ```sql
     CREATE DATABASE MyProject
