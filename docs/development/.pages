@@ -1,4 +1,5 @@
 nav:
+  - cleaner-code-through-inverted-logic.md
   - git
   - .NET: dotnet
   - javascript
