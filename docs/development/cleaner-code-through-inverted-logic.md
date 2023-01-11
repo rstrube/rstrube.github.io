@@ -111,7 +111,7 @@ Unfortunately, I still encounter code like this all the time.  There are a numbe
 
 This second example shows how to invert your logic for cleaner, more readable code.
 
-!!! tip
+!!! note
 
     I have deliberately chosen not to use Linq in this example to properly demonstrate how to invert the existing logic of the previous example!
 
@@ -173,7 +173,7 @@ This example uses inverted logic for some initial short-circuit conditions, but 
     }
     ```
 
-    !!! note
+    !!! info
 
         The `SingleOrDefault()` Linq method will return `null` if the `IEnumerable` is empty, and it will throw an exception if the `IEnumerable` contains more than one item.
 
