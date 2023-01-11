@@ -21,7 +21,9 @@ To better illustrate this concept lets take a look at some code examples.
 !!! note
 
     All of the examples provided here are written in C#, but the concepts can apply to virtually any language.  I often use similar approaches for Javascript, etc.
-    
+
+## Example Class & Business Logic
+
 First let's define a plain old class (POCO) that contains a few basic properties.  This class will be used in all the subsequent code examples:
 
 !!! example "Example POCO used in subsequent code examples"
@@ -51,7 +53,7 @@ Let's also define some very simple business logic that we'll be required to impl
 
     I realize this business logic is a little ridiculous.  Don't focus too much on the business logic, but rather the way we implement it.
 
-## Traditional "Happy-Path" Logic Flow Example
+## Nested "Happy-Path" Logic Flow Example
 
 This first example shows a more traditional "happy-path" logic flow.  It follow the rule of only having a single `return`.
 
@@ -154,7 +156,7 @@ This second example shows how to invert your logic for cleaner, more readable co
 
 In my opinion this method is much easier to read.  You can scan through the method and see all the situations that would cause error conditions very easily.  You also don't have the deep level of nesting that was present in the previous example.
 
-## Inverted Logic with Linq
+## Inverted Logic Flow Example (with Linq)
 
 This example uses inverted logic for some initial short-circuit conditions, but also relies heavily upon Linq to do the iteration and matching.
 
