@@ -1,10 +1,10 @@
 ---
 title: 'Systemd Journal Logging'
 tags: ['linux', 'systemd']
-date: 2023-01-04
+date: 2023-01-20
 ---
 # Systemd Journal Logging {: .primaryHeading }
-<small>Last updated: 2023-01-04</small>
+<small>Last updated: 2023-01-20</small>
 {: .primaryDate }
 
 ---
@@ -38,18 +38,23 @@ journalctl -b -1 # you can put any number here to go back 'n' boots
 
 ## Manually Cleaning Journal
 ```shell
-# remove archived journal files until disk space utilization falls below 100M
+# remove oldest journal entries until disk space utilization falls below 100M
 journalctl --vacuum-size=100M
 ```
 
 ```shell
-# remove all journal files containing data older than 2 weeks
+# remove all journal entries older than 2 weeks
 journalctl --vacuum-time=2weeks
 ```
 
 ```shell
-# remove all journal files containing data older than 1 day
+# remove all journal entries older than 1 day
 journalctl --vacuum-time=1days
+```
+
+```shell
+# remove all journal entries older than 1 minute
+journalctl --vacuum-time=1m
 ```
 
 See also:
