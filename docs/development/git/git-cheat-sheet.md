@@ -8,6 +8,34 @@ date: 2023-01-04
 {: .primaryDate }
 
 ---
+## Push an Existing Repository to an Upstream Remote
+
+```shell
+# add an https upstream remote
+git remote add origin https://github.com/rstrube/xxx.git
+
+# alternatively add an ssh upstream remote
+git remote add origin git@github.com:rstrube/xxx.git
+
+# force move existing branch to main (e.g. rename branch)
+git branch -M main
+
+# push a main branch and add upstream tracking reference
+git push -u origin main
+
+# alternatively push all branches and add upstream tracking reference(s)
+git push -u origin --all
+```
+
+## Set Upstream Tracking for Specific Branch
+
+```shell
+# add upstream tracking reference for current branch
+git branch -u origin/develop
+
+# add upstream tracking reference for specific branch
+git branch -u origin/develop develop
+```
 
 ## Delete all Local Branches Except for Specific Branch
 There are times when you would like to clean out most of your local branches, keeping a few specific branches:

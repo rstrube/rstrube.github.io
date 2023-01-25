@@ -17,6 +17,7 @@ theme:
   - toc.integrate
   icon:
     tag:
+      # refer to https://squidfunk.github.io/mkdocs-material/reference/icons-emojis/ to find icons
       default: material/tag
       apt: octicons/package-16
       arch-linux: simple/archlinux
@@ -31,6 +32,7 @@ theme:
       dotnet: material/dot-net
       electron: simple/electron
       external: octicons/link-external-16
+      foam: material/chart-bubble
       git: simple/git
       hardware: octicons/cpu-16
       javascript: simple/javascript
@@ -38,6 +40,8 @@ theme:
       kvm-qemu: simple/qemu
       linux: material/linux
       lodash: simple/lodash
+      markdown: octicons/markdown-16
+      mkdocs: octicons/markdown-16
       react: material/react
       sbc: material/integrated-circuit-chip
       shell: material/code-greater-than
@@ -64,11 +68,14 @@ extra:
     dotnet: dotnet
     electron: electron
     external: external
+    foam: foam
     git: git
     hardware: hardware
     javascript: javascript
     kde: kde
     kvm qemu: kvm-qemu
+    markdown: markdown
+    mkdocs: mkdocs
     linux: linux
     lodash: lodash
     react: react
@@ -85,12 +92,10 @@ extra:
 extra_css:
   - stylesheets/extra.css
 plugins:
-  - search
+  - search:
+      lang: en
   - tags:
       tags_file: tags.md
-      tags_slugify: !!python/object/apply:pymdownx.slugs.slugify
-        kwds:
-          case: lower
   - glightbox:
       touchNavigation: true
       loop: false

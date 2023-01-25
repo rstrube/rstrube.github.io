@@ -5,6 +5,7 @@ nav:
   - javascript
   - react
   - azure
+  - MkDocs: mkdocs
   - vim
   - SQL Server: sql-server
   - ...
