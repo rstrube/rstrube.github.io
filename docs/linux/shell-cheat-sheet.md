@@ -105,7 +105,7 @@ exec ./my-program
 ### Using exec to Redirect File Descriptors
 
 !!! tip
-    It's important to understand the basics of [file descriptors]('#File Descriptors') to understand how `exec` can be used to perform redirection.
+    It's important to understand the basics of [file descriptors](#file-descriptors) to understand how `exec` can be used to perform redirection.
 
 To redirect file descriptor output, run exec *without* the name of a program or script.  This uses the file descriptor syntax covered previously.
 
